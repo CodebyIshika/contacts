@@ -1,7 +1,7 @@
 'use strict';
 
 import { onEvent, select } from "./utils.js";
-import { Contact } from "./class.js";
+import { Contact } from "./Contact.js";
 
 const input = select('.input');
 const button = select('.button');
