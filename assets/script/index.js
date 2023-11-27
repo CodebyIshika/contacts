@@ -13,7 +13,7 @@ const form = select('#contactForm');
 
 const contacts = [];
 
-// Function to add a new contact
+// add a new contact
 function addContact(contactInfo) {
   const contactDiv = document.createElement('div');
   contactDiv.classList.add('contact');
@@ -56,43 +56,43 @@ function addContact(contactInfo) {
 
 // deleting the contacts
 function deleteContact() {
-    contactsContainer.addEventListener("click", (e) => {
-        const contactDiv = e.target.closest(".contact");
-        if (contactDiv) {
-            contactDiv.remove();
-            contacts.length--;
-            updateContactCount();
-        }
-    });
+  contactsContainer.addEventListener("click", (e) => {
+    const contactDiv = e.target.closest(".contact");
+      if (contactDiv) {
+        contactDiv.remove();
+        contacts.length--;
+        updateContactCount();
+      }
+  });
 }
 
 
 // capitalize the first letter of a string
 function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 // update the number of contacts
 function updateContactCount() {
-    numberInput.value = `Saved Contact: ${contacts.length}`;
+  numberInput.value = `Saved Contact: ${contacts.length}`;
 }
 
 function setInitialContactCount() {
-    numberInput.value = `Saved Contact: 0`;
+  numberInput.value = `Saved Contact: 0`;
 }
 
 function showErrorMessage(message) {
-    const errorMessage = document.createElement('p');
-    errorMessage.textContent = message;
-    errorMessage.classList.add('error-message');
+  const errorMessage = document.createElement('p');
+  errorMessage.textContent = message;
+  errorMessage.classList.add('error-message');
   
-    errorContainer.innerHTML = ''; 
-    errorContainer.appendChild(errorMessage);
+  errorContainer.innerHTML = ''; 
+  errorContainer.appendChild(errorMessage);
   
-    setTimeout(() => {
-      errorMessage.remove();
-    }, 3000);
-  }
+  setTimeout(() => {
+    errorMessage.remove();
+  }, 3000);
+}
 
   
 // Event handler for the form submission
@@ -111,35 +111,35 @@ function showErrorMessage(message) {
 
 // Validation for name, city, and email
 function validateInput(name, city, email) {
-    const nameValidation = isValidName(name);
-    const cityValidation = isValidCity(city);
-    const emailValidation = isValidEmail(email);
+  const nameValidation = isValidName(name);
+  const cityValidation = isValidCity(city);
+  const emailValidation = isValidEmail(email);
   
-    if (!nameValidation) {
-      return 'Please enter a valid name.';
-    }
+  if (!nameValidation) {
+    return 'Please enter a valid name.';
+  }
   
-    if (!cityValidation) {
-      return 'Please enter a valid city.';
-    }
+  if (!cityValidation) {
+    return 'Please enter a valid city.';
+  }
   
-    if (!emailValidation) {
-      return 'Please enter a valid email address.';
-    }
+  if (!emailValidation) {
+    return 'Please enter a valid email address.';
+  }
   
-    return '';
+  return '';
 }
   
 function isValidName(name) {
-    return /^[a-zA-Z]{2,}$/.test(name);
+  return /^[a-zA-Z]{2,}$/.test(name);
 }
   
 function isValidCity(city) {
-    return /^[a-zA-Z]{2,}$/.test(city);
+  return /^[a-zA-Z]{2,}$/.test(city);
 }
   
 function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 }
   
 
@@ -148,5 +148,5 @@ onEvent('click', select('.button'), handleFormSubmit);
 setInitialContactCount();
 
 onEvent('click', contactsContainer, (event) => {
-    deleteContact();
+  deleteContact();
 });
